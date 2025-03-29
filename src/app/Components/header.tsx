@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Search, Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 // Define the navigation item types
 type DropdownItem = {
@@ -26,15 +27,23 @@ export function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
+    if (!isHomePage) {
+      setScrolled(true); // force scrolled look on non-home pages
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+
+    handleScroll(); // initial check
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  }, [isHomePage]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -145,7 +154,7 @@ export function Header() {
               scrolled ? "text-[#010145]" : "text-white"
             } transition-colors duration-300`}
           >
-           NXT
+            NXT
           </span>
         </Link>
 

@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <CompanyProfile />
-      <Partners />
+      {/* <Partners /> */}
 
       {/* <div className="min-h-screen">
         {" "}
@@ -24,7 +24,7 @@ export default function Home() {
         {" "}
         <section
           className="relative bg-cover bg-center bg-no-repeat text-white py-20 px-4"
-          style={{ backgroundImage: "url('/bgpattern.jpeg')" }} // Change to your actual background image
+          style={{ backgroundImage: "url('/bgpattern.jpeg')" }} 
         >
           <div className="absolute inset-0 bg-black/50"></div>{" "}
           {/* Dark overlay for readability */}

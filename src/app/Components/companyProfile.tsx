@@ -40,7 +40,7 @@ export function CompanyProfile() {
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gradient-to-b from-gray-50 to-white relative">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">
           Our Story
@@ -52,89 +52,131 @@ export function CompanyProfile() {
           connected world.
         </p>
 
-        {/* Desktop Timeline */}
-        <div className="hidden md:block relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[#6f6fc5]"></div>
-          {milestones.map((milestone, index) => (
-            <motion.div
-              key={index}
-              className={`flex items-center mb-16 ${
-                index % 2 === 0 ? "justify-start" : "justify-end"
-              }`}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              <div
-                className={`w-5/12 ${
-                  index % 2 === 0 ? "text-right pr-8" : "text-left pl-8"
-                }`}
-                onMouseEnter={() => setActiveMilestone(index)}
-                onMouseLeave={() => setActiveMilestone(null)}
-              >
-                <h3 className="text-xl font-semibold text-blue-600">
-                  {milestone.date}
-                </h3>
-                <h4 className="text-lg font-medium text-gray-800 mt-2">
-                  {milestone.title}
-                </h4>
-                <motion.p
-                  className="text-gray-600 mt-2"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{
-                    opacity: activeMilestone === index ? 1 : 0,
-                    height: activeMilestone === index ? "auto" : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {milestone.description}
-                </motion.p>
-              </div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#010145] rounded-full"></div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Timeline Container */}
+        <div className="relative max-w-3xl mx-auto">
+          {/* Flow Connector using SVG */}
+          <svg
+            className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-0 h-full w-12 md:w-16 z-0"
+            viewBox="0 0 24 1000"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              d="M12 0 C12 250, 12 250, 12 500 C12 750, 12 750, 12 1000"
+              stroke="url(#timelineGradient)"
+              strokeWidth="2"
+              fill="transparent"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+            <defs>
+              <linearGradient id="timelineGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#3B82F6" />
+                <stop offset="50%" stopColor="#6366F1" />
+                <stop offset="100%" stopColor="#8B5CF6" />
+              </linearGradient>
+            </defs>
+          </svg>
 
-        {/* Mobile Timeline */}
-        <div className="md:hidden relative">
-          <div className="absolute left-4 top-0 bottom-0 w-1 bg-[#010145]"></div>
-          {milestones.map((milestone, index) => (
-            <motion.div
-              key={index}
-              className="ml-12 mb-8 relative"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              <div className="absolute -left-12 top-1 w-4 h-4 bg-[#010145] rounded-full"></div>
-              <div
-                className="bg-white p-4 rounded-lg shadow-md"
-                onClick={() =>
-                  setActiveMilestone(activeMilestone === index ? null : index)
-                }
+          {milestones.map((milestone, index) => {
+            const isLeft = index % 2 === 0;
+
+            return (
+              <motion.div
+                key={index}
+                className="relative mb-20 flex z-10"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <h3 className="text-lg font-semibold text-[#010145]">
-                  {milestone.date}
-                </h3>
-                <h4 className="text-md font-medium text-gray-800 mt-1">
-                  {milestone.title}
-                </h4>
-                <motion.p
-                  className="text-gray-600 mt-2"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{
-                    opacity: activeMilestone === index ? 1 : 0,
-                    height: activeMilestone === index ? "auto" : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
+                {/* Left side */}
+                <div
+                  className={`w-1/2 ${
+                    !isLeft ? "hidden md:block" : "text-right pr-6"
+                  }`}
                 >
-                  {milestone.description}
-                </motion.p>
-              </div>
-            </motion.div>
-          ))}
+                  {isLeft && (
+                    <Card
+                      milestone={milestone}
+                      active={activeMilestone === index}
+                      onToggle={() =>
+                        setActiveMilestone(
+                          activeMilestone === index ? null : index
+                        )
+                      }
+                    />
+                  )}
+                </div>
+
+                {/* Timeline Dot */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 top-3 w-6 h-6 rounded-full bg-white border-4 border-indigo-600 z-20">
+                  <div className="absolute inset-0 rounded-full bg-indigo-600 opacity-25 animate-ping"></div>
+                </div>
+
+                {/* Right side */}
+                <div className={`w-1/2 ${isLeft ? "hidden md:block" : "pl-6"}`}>
+                  {!isLeft && (
+                    <Card
+                      milestone={milestone}
+                      active={activeMilestone === index}
+                      onToggle={() =>
+                        setActiveMilestone(
+                          activeMilestone === index ? null : index
+                        )
+                      }
+                    />
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+
+type CardProps = {
+  milestone: Milestone;
+  active: boolean;
+  onToggle: () => void;
+};
+
+export const Card = ({ milestone, active, onToggle }: CardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const showDetail = isHovered || active;
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className="cursor-pointer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onToggle}
+    >
+      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-all duration-300">
+        <div className="inline-block px-3 py-1 mb-3 text-xs font-semibold text-indigo-800 bg-indigo-100 rounded-full">
+          {milestone.date}
+        </div>
+        <h4 className="text-xl font-bold text-gray-800 mb-2">
+          {milestone.title}
+        </h4>
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{
+            opacity: showDetail ? 1 : 0,
+            height: showDetail ? "auto" : 0,
+          }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <p className="text-gray-600">{milestone.description}</p>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
