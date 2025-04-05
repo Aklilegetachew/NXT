@@ -4,34 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const tabs = [
-  {
-    label: "Sitemap",
-    title: "Sitemap",
-    subtitle:
-      "AI generates a clear, organized sitemap based on your project needs, ensuring a strong foundation for your website.",
-    image: "/sitemap-image.png", // Replace with your sitemap image
-  },
-  {
-    label: "Wireframe",
-    title: "Wireframe",
-    subtitle:
-      "Turn your sitemap into low-fidelity wireframes to visualize structure and user flow before investing in design.",
-    image: "/wireframe-image.png", // Replace with your wireframe image
-  },
-  {
-    label: "Design",
-    title: "Design",
-    subtitle:
-      "Apply professional styles effortlessly, bringing your wireframes to life before exporting them to Webflow.",
-    image: "/design-image.png", // Replace with your design image
-  },
-];
-
-export default function FeatureTabsSection() {
-  const [activeTab, setActiveTab] = useState("Sitemap");
+export default function FeatureTabsSection({ tabs }: { tabs: any[] }) {
+  const [activeTab, setActiveTab] = useState("Planning");
   const current = tabs.find((tab) => tab.label === activeTab)!;
-
+  console.log(tabs);
   return (
     <section className="w-full py-20 px-4 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -43,9 +19,7 @@ export default function FeatureTabsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Generate sitemaps, wireframes, and polished designs with AI—
-            <br />
-            <span className="font-bold">ready to paste into Webflow.</span>
+            Our End-to-End Software Development Process
           </motion.h2>
 
           {/* Tabs */}

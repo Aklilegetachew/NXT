@@ -13,18 +13,11 @@ export default function Home() {
       <Header />
       <HeroSection />
       <CompanyProfile />
-      {/* <Partners /> */}
-
-      {/* <div className="min-h-screen">
-        {" "}
-        <Projects />
-      </div> */}
-
       <div className="mt-12">
         {" "}
         <section
           className="relative bg-cover bg-center bg-no-repeat text-white py-20 px-4"
-          style={{ backgroundImage: "url('/bgpattern.jpeg')" }} 
+          style={{ backgroundImage: "url('/bgpattern.jpeg')" }}
         >
           <div className="absolute inset-0 bg-black/50"></div>{" "}
           {/* Dark overlay for readability */}

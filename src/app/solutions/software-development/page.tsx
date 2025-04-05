@@ -48,6 +48,44 @@ const serviceGroups = [
   },
 ];
 
+const tabs = [
+  {
+    label: "Planning",
+    title: "Discovery & Requirements",
+    subtitle:
+      "We analyze your business goals, define scope, and document technical specifications to create a roadmap.",
+    image: "/steps/planning.webp", // Replace with planning/meeting image
+  },
+  {
+    label: "Prototyping",
+    title: "UI/UX Wireframes",
+    subtitle:
+      "Low-fidelity prototypes visualize user flows and validate functionality before development begins.",
+    image: "/wireframe-image.png", // Replace with software wireframe image
+  },
+  {
+    label: "Development",
+    title: "Agile Coding",
+    subtitle:
+      "Our engineers build scalable features using iterative sprints, with continuous testing and feedback loops.",
+    image: "/development-image.png", // Replace with code editor image
+  },
+  {
+    label: "Testing",
+    title: "QA & Optimization",
+    subtitle:
+      "Rigorous automated and manual testing ensures performance, security, and bug-free delivery.",
+    image: "/testing-image.png", // Replace with QA/testing image
+  },
+  {
+    label: "Deployment",
+    title: "Launch & Support",
+    subtitle:
+      "We handle seamless deployment, monitoring, and post-launch maintenance for long-term success.",
+    image: "/deployment-image.png", // Replace with server/cloud image
+  },
+];
+
 const staggerContainer = {
   hidden: {},
   show: {
@@ -164,40 +202,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {[
               {
-                title: "ERP System",
-                image: "/erp-system.png", // Replace with your ERP system image
+                title: "Tomoca Mobile App",
+                image: "/projects/tomocaApp.png",
                 description:
-                  "A powerful enterprise resource planning solution that integrates finance, inventory, HR, and operations into one seamless platform — fully customized for business needs.",
+                  "We designed and built a user-friendly mobile app that lets customers browse, order, and pay for premium coffee blends, beans, and merchandise with ease.",
               },
               {
-                title: "Hotel Booking System",
-                image: "/hotel-booking.png", // Replace with your hotel booking image
+                title: "Referral Tracking System",
+                image: "/projects/referal.png",
                 description:
-                  "An intuitive hotel reservation and management platform that streamlines bookings, room availability, payments, and customer management with ease.",
+                  "A powerful analytics platform for monitoring referral traffic, user engagement, and campaign performance in real-time. Track conversions, manage custom referral links, and optimize marketing channels with actionable insights",
               },
               {
-                title: "Hospital Management System",
-                image: "/hospital-system.png", // Replace with your hospital system image
+                title: "Over 50+ Projects",
+                image: "/projects/kuriftu.png",
                 description:
-                  "End-to-end hospital management software designed to handle patient records, appointments, billing, pharmacy, and staff operations — all in one place.",
-              },
-              {
-                title: "Hospital Management System",
-                image: "/hospital-system.png", // Replace with your hospital system image
-                description:
-                  "End-to-end hospital management software designed to handle patient records, appointments, billing, pharmacy, and staff operations — all in one place.",
-              },
-              {
-                title: "Hospital Management System",
-                image: "/hospital-system.png", // Replace with your hospital system image
-                description:
-                  "End-to-end hospital management software designed to handle patient records, appointments, billing, pharmacy, and staff operations — all in one place.",
-              },
-              {
-                title: "Hospital Management System",
-                image: "/hospital-system.png", // Replace with your hospital system image
-                description:
-                  "End-to-end hospital management software designed to handle patient records, appointments, billing, pharmacy, and staff operations — all in one place.",
+                  "We’ve successfully positioned 50+ companies on the digital map, crafting memorable brands and data-driven online strategies. From identity design to targeted campaigns, we amplify visibility, engagement, and growth—ensuring your brand stands out and scales",
               },
             ].map((project, idx) => (
               <motion.div
@@ -220,9 +240,11 @@ export default function Home() {
             ))}
           </div>
         </section>
-        <ProjectShowcaseTabs />
+
+        <FeatureTabsSection tabs={tabs} />
+        {/* <ProjectShowcaseTabs /> */}
         <FAQSection />
-        <FeatureTabsSection />
+
         {/* <ProcessRopeSteps /> */}
       </BackgroundShapes>
       <Footer />

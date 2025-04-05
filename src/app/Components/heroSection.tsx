@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 export function HeroSection() {
   return (
     <div className="relative h-screen w-full overflow-hidden">
-
       <video
         autoPlay
         loop
@@ -16,10 +15,8 @@ export function HeroSection() {
         Your browser does not support the video tag.
       </video>
 
-   
       <div className="absolute top-0 left-0 w-full h-full  bg-opacity-50"></div>
 
-   
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -27,7 +24,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl font-bold mb-4"
         >
-          Advanced Software & Media Solutions
+          Advanced Software & Business Solutions
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

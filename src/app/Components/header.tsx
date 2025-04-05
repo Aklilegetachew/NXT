@@ -77,16 +77,15 @@ export function Header() {
       href: "#",
       dropdown: [
         {
-          name: "Software Development",
+          name: "Custom Software Development",
           href: "/solutions/software-development",
-          description:
-            "Custom software solutions tailored to your business needs.",
+          description: "Custom software solutions tailored to your needs.",
         },
         {
-          name: "Digital Signage",
-          href: "/solutions/digital-signage",
+          name: "Enterprise & Business Automation",
+          href: "/solutions/business",
           description:
-            "Engaging and dynamic display solutions for businesses and advertisers.",
+            "Streamline operations with custom ERP, CRM, and workflow automation tools for seamless management",
         },
         {
           name: "Digital Marketing",
@@ -94,11 +93,19 @@ export function Header() {
           description:
             "Boost your online presence with targeted marketing strategies.",
         },
+
         {
-          name: "Broadcast",
-          href: "/solutions/broadcast",
+          name: "Efficiency & Innovation",
+          href: "/solutions/digital-marketing",
           description:
-            "Comprehensive broadcasting solutions for TV, radio, and online streaming.",
+            "process automation to cut costs and enhance customer interactions.",
+        },
+
+        {
+          name: "Intelligence & Support",
+          href: "/solutions/intelligence",
+          description:
+            "Turn data into decisions with real-time dashboards and actionable insights.",
         },
         {
           name: "Storage",
@@ -232,7 +239,7 @@ export function Header() {
                     transition={{ duration: 0.2 }}
                     className="absolute left-0 mt-2 w-64 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden z-50"
                   >
-                    <div className="py-2 px-1">
+                    <div className="  py-2 px-1">
                       {item.dropdown.map((dropdownItem, idx) => (
                         <motion.div
                           key={dropdownItem.name}
@@ -339,11 +346,6 @@ export function Header() {
                       >
                         <span className="font-medium">{item.name}</span>
                         <div className="flex items-center">
-                          {item.isNew && (
-                            <span className="mr-2 bg-red-500 text-white text-[10px] px-1 py-0.5 rounded-sm">
-                              NEW
-                            </span>
-                          )}
                           <ChevronDown
                             className={`h-4 w-4 transition-transform duration-200 ${
                               activeDropdown === item.name ? "rotate-180" : ""
