@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+type faqsType = {
+  question: string;
+  answer: string;
+};
+
 const faqs = [
   {
     question: "What makes your ERP system special?",
@@ -31,7 +36,7 @@ const faqs = [
   },
 ];
 
-export default function FAQSection() {
+export default function FAQSection({ faqs }: { faqs: faqsType[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleIndex = (index: number) => {

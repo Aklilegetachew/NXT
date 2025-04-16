@@ -6,6 +6,7 @@ import { Footer } from "@/app/Components/footer";
 import { Header } from "@/app/Components/header";
 import ProcessRopeSteps from "@/app/Components/processes";
 import ProjectShowcaseTabs from "@/app/Components/ProjectShowcaseTabs";
+import ServicesShowcase from "@/app/Components/service-list";
 import FeatureTabsSection from "@/app/Components/stepsToDev";
 import { motion } from "framer-motion";
 
@@ -48,41 +49,118 @@ const serviceGroups = [
   },
 ];
 
+const services = [
+  {
+    id: "Software",
+    title: "Software Development",
+    description:
+      "Need a custom website? You're in the right place. We create dozens of custom WordPress websites every year.",
+    image: "/softwareDevlopment.jpg",
+  },
+  {
+    id: "API",
+    title: "API Integration Services",
+    description:
+      "Ready for the next step in your online success? As the leading WooCommerce partner, we create successful webshops.",
+    image: "/api.jpg",
+  },
+  {
+    id: "Design",
+    title: "UI/UX Design",
+    description:
+      "Want to let your customers configure products online? We have extensive experience creating complex configurators.",
+    image: "/ui.jpg",
+  },
+  {
+    id: "DevOps",
+    title: "Cloud & DevOps",
+    description:
+      "Time for efficiency? Connect different systems and automate your business processes.",
+    image: "/cloud.webp",
+  },
+];
+
 const tabs = [
   {
     label: "Planning",
     title: "Discovery & Requirements",
     subtitle:
       "We analyze your business goals, define scope, and document technical specifications to create a roadmap.",
-    image: "/steps/planning.webp", // Replace with planning/meeting image
+    image: "/steps/step1plan.webp",
   },
   {
     label: "Prototyping",
     title: "UI/UX Wireframes",
     subtitle:
       "Low-fidelity prototypes visualize user flows and validate functionality before development begins.",
-    image: "/wireframe-image.png", // Replace with software wireframe image
+    image: "/steps/step2.webp",
   },
   {
     label: "Development",
     title: "Agile Coding",
     subtitle:
       "Our engineers build scalable features using iterative sprints, with continuous testing and feedback loops.",
-    image: "/development-image.png", // Replace with code editor image
+    image: "/steps/devlopment.webp",
   },
   {
     label: "Testing",
     title: "QA & Optimization",
     subtitle:
       "Rigorous automated and manual testing ensures performance, security, and bug-free delivery.",
-    image: "/testing-image.png", // Replace with QA/testing image
+    image: "/steps/testing.webp",
   },
   {
     label: "Deployment",
     title: "Launch & Support",
     subtitle:
       "We handle seamless deployment, monitoring, and post-launch maintenance for long-term success.",
-    image: "/deployment-image.png", // Replace with server/cloud image
+    image: "/steps/deploymnet.webp",
+  },
+];
+
+// const faqs = [
+//   {
+//     question: "What makes your ERP system special?",
+//     answer:
+//       "Our ERP system is tailored to your workflow and offers full integration across departments like finance, HR, inventory, and more.",
+//   },
+//   {
+//     question: "Who can benefit from your Hotel Booking System?",
+//     answer:
+//       "Our system is perfect for hotels, lodges, and resorts of all sizes. It simplifies room reservations, payments, and guest management.",
+//   },
+//   {
+//     question: "Is coding needed to use these systems?",
+//     answer:
+//       "No coding skills are required to operate our solutions — the interfaces are built to be intuitive and user-friendly.",
+//   },
+//   {
+//     question: "Can the Hospital Management System scale for large clinics?",
+//     answer:
+//       "Absolutely. It supports multi-department workflows, electronic medical records, pharmacy, billing, and more.",
+//   },
+//   {
+//     question: "Can I host these systems on cloud or on-premise?",
+//     answer:
+//       "Yes! We offer flexible deployment options depending on your infrastructure and compliance requirements.",
+//   },
+// ];
+
+const faqs = [
+  {
+    question: "Why us?",
+    answer:
+      "With over 10 years of experience, we consistently deliver high-quality software solutions. We're not just experienced — we're experts at what we do.",
+  },
+  {
+    question: "Why build custom software?",
+    answer:
+      "Custom software is designed to fit your unique business workflow. It helps you avoid the limitations of generic tools and ensures a solution tailored to your specific needs.",
+  },
+  {
+    question: "Is custom software development expensive?",
+    answer:
+      "Not at all. When you consider the value and long-term benefits, it's a fair and smart investment. You're paying for a solution that's built exactly for your job and business growth.",
   },
 ];
 
@@ -151,7 +229,15 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Empowering Ideas Through Tailored Software Solutions
+            Empowering Ideas
+          </motion.h2>
+          <motion.h2
+            className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 uppercase leading-tight"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Through Tailored Software Solutions
           </motion.h2>
 
           <motion.div
@@ -243,7 +329,9 @@ export default function Home() {
 
         <FeatureTabsSection tabs={tabs} />
         {/* <ProjectShowcaseTabs /> */}
-        <FAQSection />
+
+        <ServicesShowcase services={services} />
+        <FAQSection faqs={faqs} />
 
         {/* <ProcessRopeSteps /> */}
       </BackgroundShapes>

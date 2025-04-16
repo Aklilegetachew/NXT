@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function FeatureTabsSection({ tabs }: { tabs: any[] }) {
   const [activeTab, setActiveTab] = useState("Planning");
   const current = tabs.find((tab) => tab.label === activeTab)!;
-  console.log(tabs);
+  
   return (
     <section className="w-full py-20 px-4 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
