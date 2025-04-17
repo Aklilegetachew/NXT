@@ -28,7 +28,7 @@ export function Header() {
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/" || pathname === "/solutions/business";
 
   useEffect(() => {
     if (!isHomePage) {

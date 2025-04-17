@@ -1,6 +1,7 @@
 "use client";
 
 import BackgroundShapes from "@/app/Components/BackgroundShapes";
+import PainPointsSection from "@/app/Components/beforeAfter";
 import BrandingOrbitSection from "@/app/Components/BrandingOrbitSection";
 
 import { Footer } from "@/app/Components/footer";
@@ -12,6 +13,7 @@ export default function Bussiness() {
     <main className="min-h-screen">
       <Header />
       <NShapeHero />
+      <PainPointsSection />
       <Footer />
     </main>
   );
