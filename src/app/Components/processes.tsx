@@ -5,33 +5,27 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01.",
-    title: "Research & Discovery",
+    title: "Consultation",
     description:
-      "We validate your idea, refine its concept, examine materials, craft a roadmap, and complete the brief thoroughly.",
+      "We start by understanding your business challenges and goals to recommend the most effective automation solutions.",
   },
   {
     number: "02.",
-    title: "Website UX design",
+    title: "Design & Customization",
     description:
-      "We create intuitive flows, sitemaps, and wireframes to ensure seamless navigation and clear user paths.",
+      "Our team tailors the ERP and enterprise software to fit your workflows, ensuring seamless alignment with your operations.",
   },
   {
     number: "03.",
-    title: "Website UI design",
+    title: "Implementation & Integration",
     description:
-      "Using your brand elements, typography, and palette, we design a beautiful, functional UI tailored to your identity.",
+      "We deploy the solution, integrate it with your existing systems, and ensure a smooth transition with minimal disruption.",
   },
   {
     number: "04.",
-    title: "Clickable product",
+    title: "Ongoing Support",
     description:
-      "Our team builds a prototype ready for feedback, testing, and validation before full development begins.",
-  },
-  {
-    number: "05.",
-    title: "Delivery",
-    description:
-      "Finalized UI/UX is handed off to the dev team. We ensure a smooth transition and are ready for implementation.",
+      "After launch, we provide continuous support, updates, and optimization to ensure long-term success and scalability.",
   },
 ];
 
@@ -40,11 +34,11 @@ export default function ProcessRopeSteps() {
     <section className="relative px-4 py-24 bg-white overflow-hidden">
       <div className="max-w-5xl mx-auto text-center mb-16">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">
-          How we process website designing services
+          How we deliver enterprise software solutions
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          We turn ideas into impact through a well-defined creative process that
-          ensures results. Here’s how we do it:
+          We empower businesses through a proven process that ensures smooth
+          implementation and lasting impact. Here’s how we work with you:
         </p>
       </div>
 
