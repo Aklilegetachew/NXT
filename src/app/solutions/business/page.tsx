@@ -16,19 +16,37 @@ export default function Bussiness() {
       title: "ERP System",
       description:
         "A comprehensive platform to streamline finance, HR, inventory, and operations for growing businesses.",
-      imageUrl: "/images/erp-system.jpg",
+      imageUrl: "/projects/erp.jpg",
+      modules: [
+        "Procurement Management",
+        "Inventory Management",
+        "Financial Accounting",
+        "Sales & CRM",
+      ],
     },
     {
       title: "Hotel Reservation & Booking System",
       description:
         "An intuitive system for hotels to manage room bookings, reservations, payments, and customer communication.",
-      imageUrl: "/images/hotel-booking.jpg",
+      imageUrl: "/projects/hotel.jpg",
+      modules: [
+        "Room Booking Management",
+        "Payment & Billing System",
+        "Customer Communication Tools",
+        "Housekeeping & Maintenance Tracking",
+      ],
     },
     {
       title: "Hospital Management System",
       description:
         "A robust solution that handles patient records, appointments, billing, pharmacy, and medical staff management.",
-      imageUrl: "/images/hospital-management.jpg",
+      imageUrl: "/projects/hospitalMagment.jpg",
+      modules: [
+        "Patient Records Management",
+        "Appointment Scheduling",
+        "Pharmacy & Inventory System",
+        "Medical Billing & Insurance",
+      ],
     },
   ];
   return (

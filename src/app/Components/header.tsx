@@ -94,19 +94,19 @@ export function Header() {
             "Boost your online presence with targeted marketing strategies.",
         },
 
-        {
-          name: "Efficiency & Innovation",
-          href: "/solutions/digital-marketing",
-          description:
-            "process automation to cut costs and enhance customer interactions.",
-        },
+        // {
+        //   name: "Efficiency & Innovation",
+        //   href: "/solutions/digital-marketing",
+        //   description:
+        //     "process automation to cut costs and enhance customer interactions.",
+        // },
 
-        {
-          name: "Intelligence & Support",
-          href: "/solutions/intelligence",
-          description:
-            "Turn data into decisions with real-time dashboards and actionable insights.",
-        },
+        // {
+        //   name: "Intelligence & Support",
+        //   href: "/solutions/intelligence",
+        //   description:
+        //     "Turn data into decisions with real-time dashboards and actionable insights.",
+        // },
         {
           name: "Storage",
           href: "/solutions/storage",

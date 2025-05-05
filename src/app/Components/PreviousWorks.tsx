@@ -1,12 +1,14 @@
 // components/PreviousWorks.tsx
 
+import { motion } from "framer-motion";
 import React from "react";
 
 type Project = {
   title: string;
   description: string;
   imageUrl: string;
-  link?: string; // optional (for demo/case study link)
+  link?: string;
+  modules: string[];
 };
 
 interface PreviousWorksProps {
@@ -27,21 +29,53 @@ const PreviousWorks: React.FC<PreviousWorksProps> = ({ projects }) => {
         </p>
       </div>
 
-      <div className="space-y-10 max-w-6xl mx-auto px-4">
+      <div className="space-y-10 max-w-7xl mx-auto px-4">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow hover:shadow-lg transition duration-300"
+            className="flex flex-col h-72 md:flex-row bg-white overflow-hidden shadow hover:shadow-lg transition duration-300 "
           >
-            <div className="md:w-1/2">
+            {/* Image Section with Overlay Animation + Text */}
+            <div className="relative md:w-2/3 w-full  md:h-auto">
               <img
                 src={project.imageUrl}
                 alt={project.title}
-                className="w-full h-64 object-cover md:h-full"
+                className="w-full h-full object-cover"
               />
+
+              {/* Overlay + Text Animation */}
+              <motion.div
+                initial="initial"
+                whileHover="hover"
+                variants={{
+                  initial: { x: 0, opacity: 1 },
+                  hover: { x: "100%", opacity: 0 },
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="absolute inset-0 bg-black/60 flex items-center justify-center transition-all"
+              >
+                <motion.div
+                  variants={{
+                    initial: { opacity: 1 },
+                    hover: { opacity: 0 },
+                  }}
+                  transition={{ duration: 0.5 }}
+                  className="text-white text-center px-4"
+                >
+                  <h4 className="text-2xl font-semibold mb-2">Modules</h4>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-left">
+                    {project.modules.map((module, idx) => (
+                      <li className="text-lg" key={idx}>
+                        {module}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </motion.div>
             </div>
 
-            <div className="md:w-1/2 p-6 flex flex-col justify-center">
+            {/* Content Section */}
+            <div className="md:w-1/3 w-full p-6 flex flex-col justify-center">
               <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 {project.title}
               </h3>
