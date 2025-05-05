@@ -83,17 +83,23 @@ export default function EnterpriseSolution({
       {/* CSS for the custom image shape */}
       <style jsx global>{`
         .enterprise-image-container {
-          border-radius: 30% 50% 30% 30%;
+          border-radius: 30px;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
           clip-path: polygon(
-            0% 15%,
-            15% 0%,
-            85% 0%,
-            100% 15%,
-            100% 85%,
-            85% 100%,
-            15% 100%,
-            0% 85%
+            20% 40%,
+            25% 30%,
+            40% 20%,
+            55% 25%,
+            60% 15%,
+            75% 25%,
+            80% 40%,
+            85% 55%,
+            80% 70%,
+            65% 80%,
+            50% 75%,
+            40% 85%,
+            25% 75%,
+            20% 60%
           );
         }
       `}</style>
