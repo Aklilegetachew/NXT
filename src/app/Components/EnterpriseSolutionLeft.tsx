@@ -13,7 +13,7 @@ interface EnterpriseSolutionProps {
   breakIndex?: number;
 }
 
-export default function EnterpriseSolution({
+export default function EnterpriseLeft({
   title,
   subtitle,
   description,
@@ -25,6 +25,7 @@ export default function EnterpriseSolution({
   breakIndex,
 }: EnterpriseSolutionProps) {
   const processedDescription = description.replace("NXT", companyName || "NXT");
+
   const words = title.split(" ");
 
   // If no breakIndex provided or invalid, just render normally
@@ -54,6 +55,7 @@ export default function EnterpriseSolution({
             <span className="block">{firstLine}</span>
             <span className="block">{secondLine}</span>
           </h1>
+          ;
           {subtitle && (
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
               {subtitle}
@@ -62,12 +64,6 @@ export default function EnterpriseSolution({
         </div>
 
         <div className="relative grid gap-14 md:grid-cols-2 md:gap-16 lg:gap-20 items-center">
-          <div className="flex flex-col justify-center">
-            <p className="text-base md:text-lg lg:text-xl leading-relaxed text-gray-700">
-              {processedDescription}
-            </p>
-          </div>
-
           <div className="relative w-full">
             <div className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden rounded-tl-[8rem] rounded-br-[8rem] shadow-lg">
               <Image
@@ -80,13 +76,19 @@ export default function EnterpriseSolution({
             </div>
           </div>
 
+          <div className="flex flex-col justify-center">
+            <p className="text-base md:text-lg lg:text-xl leading-relaxed text-gray-700">
+              {processedDescription}
+            </p>
+          </div>
+
           {backgroundImageSrc && (
-            <div className="absolute bottom-4 left-4 z-10  pointer-events-none">
+            <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
               <Image
                 src={backgroundImageSrc}
                 alt="Background illustration"
-                width={500}
-                height={300}
+                width={400}
+                height={200}
                 className="object-contain"
               />
             </div>

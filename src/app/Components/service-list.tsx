@@ -42,8 +42,8 @@ export default function ServicesShowcase({
   const getBackgroundPosition = () => {
     if (!containerRef.current) return { y: 0 };
     const { height } = containerRef.current.getBoundingClientRect();
-    const movePercent = (mousePosition.y / height) * 10; // 10% movement range
-    return { y: -5 + movePercent }; // -5% to +5% movement
+    const movePercent = (mousePosition.y / height) * 10; 
+    return { y: -5 + movePercent }; 
   };
 
   const backgroundPosition = getBackgroundPosition();
@@ -59,7 +59,7 @@ export default function ServicesShowcase({
           Our Expertise
         </h2>
 
-        {/* Background images */}
+      
         {services.map((service) => (
           <div
             key={`bg-${service.id}`}
@@ -81,7 +81,7 @@ export default function ServicesShowcase({
           </div>
         ))}
 
-        {/* Service items */}
+  
         <div className="relative z-10">
           {services.map((service) => (
             <div
