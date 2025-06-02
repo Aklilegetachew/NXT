@@ -32,7 +32,7 @@ export function Header() {
 
   useEffect(() => {
     if (!isHomePage) {
-      setScrolled(true); // force scrolled look on non-home pages
+      setScrolled(true);
       return;
     }
 
@@ -40,7 +40,7 @@ export function Header() {
       setScrolled(window.scrollY > 50);
     };
 
-    handleScroll(); // initial check
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
@@ -94,19 +94,6 @@ export function Header() {
             "Boost your online presence with targeted marketing strategies.",
         },
 
-        // {
-        //   name: "Efficiency & Innovation",
-        //   href: "/solutions/digital-marketing",
-        //   description:
-        //     "process automation to cut costs and enhance customer interactions.",
-        // },
-
-        // {
-        //   name: "Intelligence & Support",
-        //   href: "/solutions/intelligence",
-        //   description:
-        //     "Turn data into decisions with real-time dashboards and actionable insights.",
-        // },
         {
           name: "Storage",
           href: "/solutions/storage",
@@ -126,7 +113,6 @@ export function Header() {
       name: "SERVICES",
       href: "/Services",
     },
-    { name: "PROJECTS", href: "/" },
     { name: "ABOUT US", href: "/aboutus" },
   ];
 
@@ -152,13 +138,13 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <div
-            className={`h-8 w-8 ${
-              scrolled ? "bg-[#010145]" : "bg-white"
+            className={`h-8 w-8 font-extrabold text-2xl ${
+              scrolled ? "bg-[#0b4f4a]" : "bg-white"
             } rounded transition-colors duration-300`}
           ></div>
           <span
-            className={`text-lg font-semibold ${
-              scrolled ? "text-[#010145]" : "text-white"
+            className={`text-2xl font-bold ${
+              scrolled ? "text-[#0b4f4a]" : "text-white"
             } transition-colors duration-300`}
           >
             NXT
@@ -182,10 +168,10 @@ export function Header() {
                     ${
                       activeDropdown === item.name
                         ? scrolled
-                          ? "text-[#010145]"
+                          ? "text-[#0b4f4a]"
                           : "text-white"
                         : scrolled
-                        ? "text-gray-800 hover:text-[#000a7a]"
+                        ? "text-gray-800 hover:text-[#0b4f4a]"
                         : "text-gray-300 hover:text-white"
                     }`}
                 >
@@ -211,7 +197,7 @@ export function Header() {
                   href={item.href}
                   className={`relative text-sm font-medium ${
                     scrolled
-                      ? "text-gray-800 hover:text-[#000a7a]"
+                      ? "text-gray-800 hover:text-[#0b4f4a]"
                       : "text-gray-300 hover:text-white"
                   } transition-colors group`}
                 >
@@ -223,7 +209,7 @@ export function Header() {
                   )}
                   <span
                     className={`absolute left-0 bottom-0 h-0.5 w-0 ${
-                      scrolled ? "bg-[#010145]" : "bg-white"
+                      scrolled ? "bg-[#0b4f4a]" : "bg-white"
                     } transition-all duration-300 group-hover:w-full`}
                   ></span>
                 </Link>
@@ -252,7 +238,7 @@ export function Header() {
                             className="block px-4 py-3 rounded-md hover:bg-gray-50 transition-colors"
                             onClick={() => setActiveDropdown(null)}
                           >
-                            <div className="font-medium text-[#010145] hover:text-black">
+                            <div className="font-medium text-[#0b4f4a] hover:text-black">
                               {dropdownItem.name}
                             </div>
                             {dropdownItem.description && (
@@ -278,20 +264,16 @@ export function Header() {
             className={`p-1 ${
               scrolled ? "hover:bg-gray-200" : "hover:bg-gray-700"
             } rounded-full transition-colors`}
-          >
-            <Search
-              className={`h-5 w-5 ${scrolled ? "text-gray-800" : "text-white"}`}
-            />
-          </button>
+          ></button>
           <Button
             variant="default"
             className={`hidden md:flex ${
               scrolled
-                ? "bg-[#010145] text-white hover:bg-[#020273]"
-                : "bg-white text-[#010145] hover:bg-gray-200"
+                ? "bg-[#0b4f4a] text-white hover:bg-[#0b4f4a]"
+                : "bg-white text-[#0b4f4a] hover:bg-gray-200"
             } transition-colors duration-300`}
           >
-            Login
+            Contact us
           </Button>
 
           {/* Mobile Menu Button */}
@@ -342,7 +324,7 @@ export function Header() {
                     <div>
                       <button
                         onClick={() => toggleDropdown(item.name)}
-                        className="flex items-center justify-between w-full py-2 text-gray-800 hover:text-[#000a7a]"
+                        className="flex items-center justify-between w-full py-2 text-gray-800 hover:text-[#0b4f4a]"
                       >
                         <span className="font-medium">{item.name}</span>
                         <div className="flex items-center">
@@ -382,7 +364,7 @@ export function Header() {
                                     setIsOpen(false);
                                   }}
                                 >
-                                  <div className="font-medium text-[#010145] hover:text-black">
+                                  <div className="font-medium text-[#0b4f4a] hover:text-black">
                                     {dropdownItem.name}
                                   </div>
                                   {dropdownItem.description && (
@@ -400,7 +382,7 @@ export function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="flex items-center justify-between py-2 text-gray-800 hover:text-[#000a7a]"
+                      className="flex items-center justify-between py-2 text-gray-800 hover:bg-[#476d6b]"
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="font-medium">{item.name}</span>
@@ -419,8 +401,15 @@ export function Header() {
                 transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
                 className="pt-2"
               >
-                <Button className="w-full bg-[#010145] text-white hover:bg-[#020273]">
-                  Login
+                <Button
+                  variant="default"
+                  className={`hidden md:flex transition-colors duration-300 ${
+                    scrolled
+                      ? "bg-[#0b4f4a] text-white hover:bg-[#093d3a]"
+                      : "bg-white text-[#0b4f4a] hover:bg-[#e6f4f3]"
+                  }`}
+                >
+                  Conatct us
                 </Button>
               </motion.div>
             </div>

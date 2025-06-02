@@ -42,10 +42,10 @@ export function CompanyProfile() {
   return (
     <section className="py-16 bg-gradient-to-b from-gray-50 to-white relative">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-8 text-[#0b4f4a]">
           Our Story
         </h2>
-        <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto">
+        <p className="text-center text-[#0b4f4a] mb-16 max-w-3xl mx-auto">
           We're a software development firm that helps our clients succeed with
           innovative, software-centric solutions. We design, integrate, and
           support cutting-edge media and communication technologies for a
