@@ -12,43 +12,43 @@ type Partner = {
 
 const partners: Partner[] = [
   {
-    name: "Partner 1",
-    logo: "/partners/partner1.png",
-    url: "https://partner1.com",
-  },
-  {
     name: "Partner 2",
-    logo: "/partners/partner2.png",
+    logo: "/logos/white_logo 1.svg",
     url: "https://partner2.com",
   },
   {
     name: "Partner 3",
-    logo: "/partners/partner3.png",
+    logo: "/logos/elnes_real.svg",
     url: "https://partner3.com",
   },
   {
     name: "Partner 4",
-    logo: "/partners/partner4.png",
+    logo: "/logos/kuriftu_logo.svg",
     url: "https://partner4.com",
   },
   {
     name: "Partner 5",
-    logo: "/partners/partner5.png",
+    logo: "/logos/prime_media_real.svg",
     url: "https://partner5.com",
   },
   {
     name: "Partner 6",
-    logo: "/partners/partner6.png",
+    logo: "/logos/safecare_vector_real.svg",
     url: "https://partner6.com",
   },
   {
     name: "Partner 7",
-    logo: "/partners/partner7.png",
+    logo: "/logos/TOMOCA_real.svg",
     url: "https://partner7.com",
   },
   {
     name: "Partner 8",
-    logo: "/partners/partner8.png",
+    logo: "/logos/Versavvy_logo.svg",
+    url: "https://partner8.com",
+  },
+  {
+    name: "Partner 8",
+    logo: "/logos/yeshiwas.svg",
     url: "https://partner8.com",
   },
   // Add more partners as needed

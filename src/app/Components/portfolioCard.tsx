@@ -12,22 +12,12 @@ interface PortfolioItem {
   image: string;
   tags: string[];
   category: string;
-  size: "small" | "medium" | "large";
+  size: "small" | "medium" | "large" | "defualt";
   gradient?: string;
+  link?: string;
 }
 
 const portfolioItems: PortfolioItem[] = [
-  {
-    id: 1,
-    title: "Tomoca App",
-    author: "Tomoca ",
-    authorAvatar: "/placeholder.svg?height=32&width=32",
-    image: "/front/tomocaappframe.png",
-    tags: ["DEV", "SOTD"],
-    category: "Immersive",
-    size: "medium",
-    // gradient: "from-purple-400 via-pink-400 to-purple-600",
-  },
   {
     id: 2,
     title: "Kurift Resort and Spa",
@@ -37,6 +27,7 @@ const portfolioItems: PortfolioItem[] = [
     tags: ["DEV", "SOTD"],
     category: "Web Design",
     size: "large",
+    link: "https://kurifturesort.com",
   },
   {
     id: 3,
@@ -47,6 +38,7 @@ const portfolioItems: PortfolioItem[] = [
     tags: ["DEV", "SOTD"],
     category: "Portfolio",
     size: "medium",
+    link: "https://www.amdedesign.com/",
   },
   {
     id: 4,
@@ -57,6 +49,7 @@ const portfolioItems: PortfolioItem[] = [
     tags: ["DEV", "SOTD"],
     category: "Immersive",
     size: "medium",
+    link: "https://tomocacoffeefarm.et/",
   },
   {
     id: 5,
@@ -67,6 +60,18 @@ const portfolioItems: PortfolioItem[] = [
     tags: ["DEV", "SOTD"],
     category: "Web Design",
     size: "medium",
+    link: "https://getnetyawkal.com/",
+  },
+  {
+    id: 1,
+    title: "Tomoca App",
+    author: "Tomoca ",
+    authorAvatar: "/placeholder.svg?height=32&width=32",
+    image: "/front/tomocaappframe.png",
+    tags: ["DEV", "SOTD"],
+    category: "Immersive",
+    size: "large",
+    link: "https://tomocacloud.com",
   },
   {
     id: 6,
@@ -77,7 +82,9 @@ const portfolioItems: PortfolioItem[] = [
     tags: ["DEV", "SOTD"],
     category: "Food & Beverage",
     size: "medium",
+    link: "https://bewelltradingco.com/",
   },
+
   {
     id: 7,
     title: "Semah Hospital",
@@ -86,18 +93,21 @@ const portfolioItems: PortfolioItem[] = [
     image: "/front/semhae.png",
     tags: ["DEV", "SOTD"],
     category: "Portfolio",
-    size: "large",
+    size: "medium",
+    link: "https://semahmch.com/",
   },
-  //   {
-  //     id: 8,
-  //     title: "M.N.Y.",
-  //     author: "CUSP",
-  //     authorAvatar: "/placeholder.svg?height=32&width=32",
-  //     image: "/front/kuriftu.png",
-  //     tags: ["SOTD"],
-  //     category: "Fashion",
-  //     size: "medium",
-  //   },
+
+  {
+    id: 7,
+    title: "Tomoca Telegram Bot",
+    author: "Tomoca Bot",
+    authorAvatar: "/placeholder.svg?height=32&width=32",
+    image: "/front/tomocaTele2.png",
+    tags: ["DEV", "SOTD"],
+    category: "Portfolio",
+    size: "defualt",
+    link: "https://t.me/TomTomChan",
+  },
 ];
 
 function PortfolioCard({
@@ -112,13 +122,15 @@ function PortfolioCard({
   const getCardSize = () => {
     switch (item.size) {
       case "large":
-        return "md:col-span-2 md:row-span-1";
+        return "md:col-span-2 md:row-span-2";
       case "medium":
         return "md:col-span-1 md:row-span-1";
       case "small":
         return "md:col-span-1 md:row-span-1";
+      case "defualt":
+        return "md:col-span-2 md:row-span-2";
       default:
-        return "md:col-span-1 md:row-span-1";
+        return "md:col-span-2 md:row-span-2";
     }
   };
 
@@ -136,7 +148,6 @@ function PortfolioCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background Image or Gradient with 16:9 aspect ratio */}
       <div className="relative w-full aspect-[16/9] overflow-hidden">
         {item.gradient ? (
           <div
@@ -224,6 +235,7 @@ function PortfolioCard({
             }}
             transition={{ duration: 0.3 }}
             className="bg-white text-[#0b4f4a] px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors shadow-lg"
+            onClick={() => window.open(`${item.link}`, "_blank")}
           >
             View Project
           </motion.button>

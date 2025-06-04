@@ -4,7 +4,7 @@ import { HeroSection } from "./Components/heroSection";
 import { CompanyProfile } from "./Components/companyProfile";
 import { Partners } from "./Components/partners";
 import { Projects } from "./Components/projects";
-import { ContactUs } from "./Components/contactus";
+import ContactUs from "./Components/contactus";
 import { Footer } from "./Components/footer";
 import Timeline from "./Components/timeLine";
 import PortfolioCards from "./Components/portfolioCard";
@@ -77,7 +77,7 @@ export default function Home() {
           <PortfolioCards />
         </div>
       </div>
-      <div className="mt-12">
+      {/* <div className="mt-12">
         <section
           className="relative bg-cover bg-center bg-no-repeat text-white py-20 px-4"
           style={{ backgroundImage: "url('/bgpattern.jpeg')" }}
@@ -97,7 +97,8 @@ export default function Home() {
             </button>
           </div>
         </section>
-      </div>
+      </div> */}
+      <Partners />
       <ContactUs />
       <Footer />
     </main>
