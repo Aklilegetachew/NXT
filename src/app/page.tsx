@@ -99,7 +99,7 @@ export default function Home() {
         </section>
       </div> */}
       <Partners />
-      <ContactUs />
+      {/* <ContactUs /> */}
       <Footer />
     </main>
   );

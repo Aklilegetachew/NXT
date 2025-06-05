@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Send } from "lucide-react";
 
+// #341C1C
+
 export function Footer() {
   return (
-    <footer className="bg-[#010145] text-white py-16">
+    <footer className="bg-[#341C1C] text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Contact Info */}
