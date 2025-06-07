@@ -8,6 +8,7 @@ import ContactUs from "./Components/contactus";
 import { Footer } from "./Components/footer";
 import Timeline from "./Components/timeLine";
 import PortfolioCards from "./Components/portfolioCard";
+import BackgroundPaths from "./Components/BackgroundPath";
 
 export default function Home() {
   const milestones = [
@@ -45,12 +46,12 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <HeroSection />
-      <div className="min-h-screen  pt-16 px-4">
+      <div className="min-h-screen  pt-16 px-4 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-8 text-[#0b4f4a]">
+          <h2 className="text-4xl font-bold text-center mb-8 text-[#341C1C]">
             Our Story
           </h2>
-          <p className="text-center text-[#0b4f4a] mb-16 max-w-3xl mx-auto">
+          <p className="text-center text-[#341C1C] mb-16 max-w-3xl mx-auto">
             We're a software development firm that helps our clients succeed
             with innovative, software-centric solutions. We design, integrate,
             and support cutting-edge media and communication technologies for a
@@ -63,10 +64,10 @@ export default function Home() {
       </div>
 
       {/* Portfolio Section */}
-      <div className="py-16 px-4 bg-gray-50">
+      <div className="py-16 px-4 bg-gray-50" id="Explore">
         <div className="max-w-4/5 mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#341C1C] mb-4">
               Our Portfolio
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -77,29 +78,8 @@ export default function Home() {
           <PortfolioCards />
         </div>
       </div>
-      {/* <div className="mt-12">
-        <section
-          className="relative bg-cover bg-center bg-no-repeat text-white py-20 px-4"
-          style={{ backgroundImage: "url('/bgpattern.jpeg')" }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>{" "}
-          <div className="relative max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Benefits</h2>
-            <p className="text-lg mb-8 leading-relaxed">
-              For each engagement, we dive deep to understand your business
-              goals and then focus on operational alignment to those objectives.
-              We look at technology as a tool to support your operations. A
-              smart balance of process and carefully selected solutions allows
-              us to deliver technology that meets your goals and expectations.
-            </p>
-            <button className="bg-[#010145] hover:bg-[#010145] text-white font-bold py-3 px-6 rounded-sm transition transform hover:scale-105">
-              Contact Us
-            </button>
-          </div>
-        </section>
-      </div> */}
       <Partners />
-      {/* <ContactUs /> */}
+      <BackgroundPaths />
       <Footer />
     </main>
   );

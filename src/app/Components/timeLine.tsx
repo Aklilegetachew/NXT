@@ -113,23 +113,23 @@ function MilestoneItem({
                     src={image || "/placeholder.svg"}
                     alt={title}
                     fill
-                    className="object-cover text-[#0b4f4a]"
+                    className="object-cover text-[#341C1C]"
                   />
-                  <div className="absolute -right-8 -top-8 text-8xl text-[#0b4f4a] font-bold opacity-20 select-none">
+                  <div className="absolute -right-8 -top-8 text-8xl text-[#341C1C] font-bold opacity-20 select-none">
                     {year}
                   </div>
                 </div>
               </div>
               <div className="w-[10%] flex justify-center">
                 <div className="relative flex flex-col items-center">
-                  <div className="w-4 h-4 bg-[#0b4f4a] rounded-full z-10 mt-2" />
+                  <div className="w-4 h-4 bg-[#341C1C] rounded-full z-10 mt-2" />
                   {!isLast && (
-                    <div className="absolute w-0.5 bg-[#0b4f4a] h-64 top-6" />
+                    <div className="absolute w-0.5 bg-[#341C1C] h-64 top-6" />
                   )}
                 </div>
               </div>
               <div className="w-[45%] pl-12">
-                <div className="text-[#0b4f4a] text-5xl font-bold mb-4">
+                <div className="text-[#341C1C] text-5xl font-bold mb-4">
                   {year}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
@@ -153,7 +153,7 @@ export default function Timeline({ milestones }: TimelineProps) {
       className="relative py-12"
     >
       {/* Desktop central line */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#0b4f4a] transform -translate-x-1/2" />
+      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#341C1C] transform -translate-x-1/2" />
 
       {milestones.map((milestone, index) => (
         <MilestoneItem

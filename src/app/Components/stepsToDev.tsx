@@ -69,7 +69,7 @@ export default function FeatureTabsSection({ tabs }: { tabs: any[] }) {
                 alt={current.label}
                 width={800}
                 height={600}
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover color-[#]"
               />
             </motion.div>
           </AnimatePresence>

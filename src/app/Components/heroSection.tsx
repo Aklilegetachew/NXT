@@ -40,7 +40,7 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <a
-            href="#explore"
+            href="#Explore"
             className="bg-white text-[#010145] px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200 transition-colors duration-300"
           >
             Explore Now

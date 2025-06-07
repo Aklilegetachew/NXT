@@ -24,14 +24,14 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <div className="mt-1">✉️</div>
                 <div>
-                  <p>info@versavvymedia.com</p>
-                  <p>sales@versavvymedia.com</p>
+                  <p>info@nxtsoftwares.com</p>
+                  <p>sales@nxtsoftwares.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <div className="mt-1">📍</div>
                 <div>
-                  <p>Sterling Bldg. | First</p>
+                  <p>Sterling Bldg. | Fifth</p>
                   <p>Floor Olympia, Gazebo</p>
                   <p>Roundabout Addis</p>
                   <p>Ababa, Ethiopia</p>
@@ -44,8 +44,8 @@ export function Footer() {
           <div className="space-y-6">
             <h3 className="text-xl font-bold">Our Mission</h3>
             <p className="leading-relaxed">
-              To Design, Integrate And Support Cutting Edge Media And
-              Communication Technologies For A Connected World.
+              To architect, build, and support cutting-edge software systems
+              that drive digital transformation and global connectivity.
             </p>
             <div className="flex gap-4">
               <Link href="#" className="hover:text-gray-300 transition-colors">
@@ -74,22 +74,22 @@ export function Footer() {
                 HOME
               </Link>
               <Link
-                href="/services"
+                href="/solutions/software-development"
+                className="block hover:text-gray-300 transition-colors"
+              >
+                SOLUTIONS
+              </Link>
+              <Link
+                href="/Services"
                 className="block hover:text-gray-300 transition-colors"
               >
                 SERVICES
               </Link>
               <Link
-                href="/contact"
-                className="block hover:text-gray-300 transition-colors"
-              >
-                CONTACT
-              </Link>
-              <Link
                 href="/about"
                 className="block hover:text-gray-300 transition-colors"
               >
-                ABOUT
+                ABOUT US
               </Link>
             </nav>
           </div>
@@ -99,22 +99,22 @@ export function Footer() {
             <h3 className="text-xl font-bold">Solutions</h3>
             <nav className="space-y-3">
               <Link
-                href="/solutions/digital-signage"
+                href="/solutions/software-development"
                 className="block hover:text-gray-300 transition-colors"
               >
-                DIGITAL SIGNAGE
+                SOFTWARE DEVELOPMENT
+              </Link>
+              <Link
+                href="/solutions/business"
+                className="block hover:text-gray-300 transition-colors"
+              >
+                BUSINESS AUTOMATION
               </Link>
               <Link
                 href="/solutions/digital-marketing"
                 className="block hover:text-gray-300 transition-colors"
               >
                 DIGITAL MARKETING
-              </Link>
-              <Link
-                href="/solutions/broadcast"
-                className="block hover:text-gray-300 transition-colors"
-              >
-                BROADCAST
               </Link>
               <Link
                 href="/solutions/storage"
@@ -135,7 +135,8 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10 text-center">
           <p>
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+            &copy; {new Date().getFullYear()} NXT Softwares. All rights
+            reserved.
           </p>
         </div>
       </div>

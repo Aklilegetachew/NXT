@@ -43,11 +43,6 @@ const partners: Partner[] = [
   },
   {
     name: "Partner 8",
-    logo: "/logos/Versavvy_logo.svg",
-    url: "https://partner8.com",
-  },
-  {
-    name: "Partner 8",
     logo: "/logos/yeshiwas.svg",
     url: "https://partner8.com",
   },
@@ -85,7 +80,7 @@ export function Partners() {
   return (
     <section ref={ref} className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-12 text-[#341C1C]">
           Our Partners
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-center">
