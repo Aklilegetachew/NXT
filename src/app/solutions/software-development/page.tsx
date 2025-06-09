@@ -10,6 +10,7 @@ import ServicesShowcase from "@/app/Components/service-list";
 import SomeOfWorkCard from "@/app/Components/SomeWorks";
 import FeatureTabsSection from "@/app/Components/stepsToDev";
 import { motion } from "framer-motion";
+import { Metadata } from "next";
 
 const serviceGroups = [
   {
@@ -150,170 +151,194 @@ const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
-
+export const metadata: Metadata = {
+  title: "Solutions | NXT Softwares – ERP, Mobile, API Integration & DevOps",
+  description:
+    "Discover tailored software solutions from NXT Softwares: ERP, mobile apps, API integrations, UI/UX design, cloud & DevOps.",
+  openGraph: {
+    title: "NXT Softwares Solutions",
+    description:
+      "ERP, mobile apps, API integrations, UI/UX, and cloud DevOps solutions for Ethiopian businesses.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/solutions`,
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/og-solutions.png`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [`${process.env.NEXT_PUBLIC_SITE_URL}/og-solutions.png`],
+  },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/solutions` },
+};
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            serviceType: "Software Development",
+            provider: {
+              "@type": "Organization",
+              name: "NXT Softwares",
+              url: process.env.NEXT_PUBLIC_SITE_URL,
+            },
+            about: "ERP, mobile apps, API integrations, UI/UX, cloud & DevOps.",
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+      <main className="min-h-screen">
+        <Header />
 
-      <section className="relative py-20 px-4 bg-white dark:bg-gray-900 text-center mt-12 overflow-hidden">
-        {/* Top Left Dots */}
-        <div className="absolute top-0 left-0 w-54 h-50 opacity-10">
-          <svg className="w-full h-full " viewBox="0 0 100 100" fill="none">
-            <defs>
-              <pattern
-                id="dots"
-                x="0"
-                y="0"
-                width="10"
-                height="10"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="2" cy="2" r="2" fill="black" />
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="url(#dots)" />
-          </svg>
-        </div>
-
-        {/* Bottom Right Dots */}
-        <div className="absolute bottom-0 right-0 w-52 h-48 opacity-10">
-          <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
-            <defs>
-              <pattern
-                id="dots2"
-                x="0"
-                y="0"
-                width="10"
-                height="10"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="2" cy="2" r="2" fill="black" />
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="url(#dots2)" />
-          </svg>
-        </div>
-
-        {/* Content Goes Here */}
-        <motion.h2
-          className="text-5xl font-extrabold tracking-tight text-bg-[#341C1C] dark:text-white mb-6 uppercase leading-tight"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <section
+          aria-labelledby="solutions-overview"
+          className="relative py-20 px-4 bg-white dark:bg-gray-900 text-center mt-12 overflow-hidden"
         >
-          Empowering Ideas
-        </motion.h2>
-        <motion.h2
-          className="text-5xl font-extrabold tracking-tight text-[#341C1C] dark:text-white mb-6 uppercase leading-tight"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Through Tailored Software Solutions
-        </motion.h2>
-
-        <motion.div
-          className="h-0.5 w-full max-w-5xl mx-auto bg-[#341C1C] rounded-full mb-12"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          style={{ transformOrigin: "left" }}
-        />
-
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="show"
-          >
-            {serviceGroups.map((group, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
-              >
-                <h4 className="text-lg font-semibold text-[#341C1C] dark:text-white mb-3">
-                  {group.title}
-                </h4>
-                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc list-inside">
-                  {group.items.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-      {/* Products Built Section */}
-      <section className="py-24 px-4 text-[#341C1C] text-center">
-        <motion.h3
-          className="text-4xl md:text-5xl font-bold mb-16 leading-tight"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Among Our <span className="text-[#341C1C]">Works</span>
-        </motion.h3>
-
-        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto"> */}
-        {/* {[
-              {
-                title: "Tomoca Mobile App",
-                image: "/projects/tomocaApp.png",
-                description:
-                  "We designed and built a user-friendly mobile app that lets customers browse, order, and pay for premium coffee blends, beans, and merchandise with ease.",
-              },
-              {
-                title: "Referral Tracking System",
-                image: "/projects/referal.png",
-                description:
-                  "A powerful analytics platform for monitoring referral traffic, user engagement, and campaign performance in real-time. Track conversions, manage custom referral links, and optimize marketing channels with actionable insights",
-              },
-              {
-                title: "Over 50+ Projects",
-                image: "/projects/kuriftu.png",
-                description:
-                  "We’ve successfully positioned 50+ companies on the digital map, crafting memorable brands and data-driven online strategies. From identity design to targeted campaigns, we amplify visibility, engagement, and growth—ensuring your brand stands out and scales",
-              },
-            ].map((project, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-gray-900 rounded-3xl overflow-hidden shadow-xl border border-gray-800 hover:scale-[1.02] transition-transform duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.3 }}
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover border-b border-gray-700"
-                />
-                <div className="p-6 text-left">
-                  <h4 className="text-2xl font-bold mb-2">{project.title}</h4>
-                  <p className="text-sm text-gray-300">{project.description}</p>
-                </div>
-              </motion.div>
-            ))} */}
-        <div className="py-16 px-4 bg-gray-50" id="Explore">
-          <div className="max-w-4/5 mx-auto">
-            <SomeOfWorkCard />
+          {/* Top Left Dots */}
+          <div className="absolute top-0 left-0 w-54 h-50 opacity-10">
+            <svg className="w-full h-full " viewBox="0 0 100 100" fill="none">
+              <defs>
+                <pattern
+                  id="dots"
+                  x="0"
+                  y="0"
+                  width="10"
+                  height="10"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="2" cy="2" r="2" fill="black" />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#dots)" />
+            </svg>
           </div>
-        </div>
-        {/* </div> */}
-      </section>
 
-      <FeatureTabsSection tabs={tabs} />
-      {/* <ProjectShowcaseTabs /> */}
+          {/* Bottom Right Dots */}
+          <div className="absolute bottom-0 right-0 w-52 h-48 opacity-10">
+            <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
+              <defs>
+                <pattern
+                  id="dots2"
+                  x="0"
+                  y="0"
+                  width="10"
+                  height="10"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="2" cy="2" r="2" fill="black" />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#dots2)" />
+            </svg>
+          </div>
 
-      <ServicesShowcase services={services} />
-      <FAQSection faqs={faqs} />
+          {/* Content Goes Here */}
+          <motion.h2
+            className="text-5xl font-extrabold tracking-tight text-bg-[#341C1C] dark:text-white mb-6 uppercase leading-tight"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Empowering Ideas
+          </motion.h2>
+          <motion.h2
+            className="text-5xl font-extrabold tracking-tight text-[#341C1C] dark:text-white mb-6 uppercase leading-tight"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Through Tailored Software Solutions
+          </motion.h2>
 
-      {/* <ProcessRopeSteps /> */}
+          <motion.div
+            className="h-0.5 w-full max-w-5xl mx-auto bg-[#341C1C] rounded-full mb-12"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            style={{ transformOrigin: "left" }}
+          />
 
-      <Footer />
-    </main>
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
+            >
+              {serviceGroups.map((group, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                >
+                  <h4 className="text-lg font-semibold text-[#341C1C] dark:text-white mb-3">
+                    {group.title}
+                  </h4>
+                  <ul
+                    aria-label="Software Development Services"
+                    className="space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc list-inside"
+                  >
+                    {group.items.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+        {/* Products Built Section */}
+        <section className="py-24 px-4 text-[#341C1C] text-center">
+          <motion.h3
+            className="text-4xl md:text-5xl font-bold mb-16 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Among Our <span className="text-[#341C1C]">Works</span>
+          </motion.h3>
+
+         
+          <div className="py-16 px-4 bg-gray-50" id="Explore">
+            <div className="max-w-4/5 mx-auto">
+              <SomeOfWorkCard />
+            </div>
+          </div>
+          {/* </div> */}
+        </section>
+
+        <FeatureTabsSection tabs={tabs} />
+        {/* <ProjectShowcaseTabs /> */}
+
+        <ServicesShowcase services={services} />
+        <FAQSection faqs={faqs} />
+
+        {/* <ProcessRopeSteps /> */}
+
+        <Footer />
+      </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: { "@type": "Answer", text: f.answer },
+            })),
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+    </>
   );
 }

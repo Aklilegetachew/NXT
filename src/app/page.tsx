@@ -9,7 +9,34 @@ import { Footer } from "./Components/footer";
 import Timeline from "./Components/timeLine";
 import PortfolioCards from "./Components/portfolioCard";
 import BackgroundPaths from "./Components/BackgroundPath";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "NXT Softwares – Innovative Ethiopian Software & Media Solutions",
+  description:
+    "Ethiopia-based NXT Softwares offers ERP, mobile apps, digital media, broadcasting, and business software solutions.",
+  openGraph: {
+    title: "NXT Softwares – Ethiopian Software & Media Solutions",
+    description:
+      "ERP, mobile apps, digital media, broadcasting, and business software tailored for Ethiopian enterprises.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/og-home.png`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [`${process.env.NEXT_PUBLIC_SITE_URL}/og-home.png`],
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL,
+  },
+};
 export default function Home() {
   const milestones = [
     {
@@ -39,6 +66,7 @@ export default function Home() {
       description:
         "Launched digital e-commerce and booking platform for two world-renowned Ethiopian companies.",
       image: "/lastStep.svg?height=240&width=240",
+      
     },
   ];
 
@@ -46,7 +74,10 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <HeroSection />
-      <div className="min-h-screen  pt-16 px-4 bg-gray-50">
+      <section
+        aria-labelledby="our-story"
+        className="min-h-screen  pt-16 px-4 bg-gray-50"
+      >
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-8 text-[#341C1C]">
             Our Story
@@ -61,11 +92,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <Timeline milestones={milestones} />
         </div>
-      </div>
+      </section>
 
       {/* Portfolio Section */}
       <div className="py-16 px-4 bg-gray-50" id="Explore">
-        <div className="max-w-4/5 mx-auto">
+        <section id="portfolio" className="max-w-4/5 mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#341C1C] mb-4">
               Our Portfolio
@@ -76,11 +107,31 @@ export default function Home() {
             </p>
           </div>
           <PortfolioCards />
-        </div>
+        </section>
       </div>
       <Partners />
       <BackgroundPaths />
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "NXT Softwares",
+            url: process.env.NEXT_PUBLIC_SITE_URL,
+            logo: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
+            sameAs: ["https://www.linkedin.com/company/nxt-trading-plc/"],
+            description:
+              "Ethiopia-based developer of ERP, mobile apps, digital media & broadcasting solutions.",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Addis Ababa",
+              addressCountry: "ET",
+            },
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
     </main>
   );
 }

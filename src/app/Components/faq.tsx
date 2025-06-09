@@ -51,7 +51,10 @@ export default function FAQSection({ faqs }: { faqs: faqsType[] }) {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Left Column */}
         <div>
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2
+            id="solutions-faq"
+            className="text-4xl font-bold text-gray-900 dark:text-white mb-6"
+          >
             Have questions? <br />{" "}
             <span className="text-gray-500">Find answers.</span>
           </h2>
