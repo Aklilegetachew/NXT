@@ -94,14 +94,14 @@ const tabs = [
     title: "UI/UX Wireframes",
     subtitle:
       "Low-fidelity prototypes visualize user flows and validate functionality before development begins.",
-    image: "/projects/prototype.svg",
+    image: "/steps/prototypecolor1.png",
   },
   {
     label: "Development",
     title: "Agile Coding",
     subtitle:
       "Our engineers build scalable features using iterative sprints, with continuous testing and feedback loops.",
-    image: "/steps/devlopment.webp",
+    image: "/steps/prototypecolor.png",
   },
   {
     label: "Testing",

@@ -1,261 +1,510 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Mail, Phone, Clock, Send } from "lucide-react";
+import type React from "react";
+
+import { useState, useEffect } from "react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  Github,
+  MessageSquare,
+  User,
+  Building,
+  Globe,
+  CheckCircle,
+} from "lucide-react";
 
 export default function ContactUs() {
+  const [scrollY, setScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const officeMapURL =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7014708095016!2d38.764860211324034!3d8.99959288940983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b850b4031ae6d%3A0x6205c136da432529!2sSTERLING%20BUILDING!5e0!3m2!1sen!2set!4v1749460155405!5m2!1sen!2set";
+
+  const directionsURL =
+    "https://www.google.com/maps/dir/?api=1&destination=STERLING+BUILDING,+Addis+Ababa,+Ethiopia";
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    setIsVisible(true);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        message: "",
+      });
+    }, 3000);
+  };
+
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: "Office Address",
+      details: [
+        "NXT Trading PLC Headquarters",
+        "Addis Ababa, Ethiopia",
+        "Gazebo Roundabout, Sterling Bldg",
+      ],
+    },
+    {
+      icon: Phone,
+      title: "Phone Numbers",
+      details: ["+251 94 677 7516", "+251 937 17 46 09", "+251 115 574 409"],
+    },
+    {
+      icon: Mail,
+      title: "Email Addresses",
+      details: [
+        "hermela@nxtsoftwares.com",
+        "aklile@nxtsoftwares.com",
+        "info@nxtsoftwares.com",
+        "sales@nxtsoftwares.com",
+      ],
+    },
+    {
+      icon: Clock,
+      title: "Business Hours",
+      details: [
+        "Monday - Friday: 8:00 AM - 6:00 PM",
+        "Saturday: 9:00 AM - 2:00 PM",
+        "Sunday: Closed",
+      ],
+    },
+  ];
+
+  const socialMedia = [
+    { icon: Facebook, name: "Facebook", url: "#", color: "#1877F2" },
+    { icon: Twitter, name: "Twitter", url: "#", color: "#1DA1F2" },
+    { icon: Linkedin, name: "LinkedIn", url: "#", color: "#0A66C2" },
+    { icon: Instagram, name: "Instagram", url: "#", color: "#E4405F" },
+    { icon: Github, name: "GitHub", url: "#", color: "#181717" },
+  ];
+
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900 overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-100 via-red-50 to-orange-50 animate-pulse"></div>
         <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, #0b4f4a 2px, transparent 2px)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
+          className="absolute inset-0 bg-gradient-to-l from-orange-100 via-red-100 to-red-50 mix-blend-multiply"
+          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        ></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0b4f4a] rounded-full mb-6">
-            <Mail className="h-8 w-8 text-white" />
+      {/* Floating Elements */}
+      <div className="fixed inset-0">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 rounded-full animate-pulse opacity-20"
+            style={{
+              backgroundColor: "#341C1C",
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative py-32 px-4 overflow-hidden">
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <div
+            className={`transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
+            <div
+              className="inline-block px-6 py-3 rounded-full border-2 mb-8"
+              style={{ backgroundColor: "#341C1C10", borderColor: "#341C1C" }}
+            >
+              <span
+                className="text-sm font-medium"
+                style={{ color: "#341C1C" }}
+              >
+                GET IN TOUCH
+              </span>
+            </div>
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-gray-900">
+              Contact <span style={{ color: "#341C1C" }}>Us</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Ready to transform your business with cutting-edge technology?
+              Let's discuss your project and bring your vision to life.
+            </p>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Let's Start a Conversation
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Ready to take your project to the next level? We're here to help you
-            succeed. Get in touch and let's discuss how we can work together.
-          </p>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
-          {/* Contact Form - Takes 2 columns */}
-          <div className="lg:col-span-2">
-            <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
-              <CardHeader className="pb-8 bg-gradient-to-r from-[#0b4f4a] to-[#0d5d57] text-white rounded-t-lg">
-                <CardTitle className="text-2xl font-semibold flex items-center gap-3">
-                  <Send className="h-6 w-6" />
-                  Send us a message
-                </CardTitle>
-                <p className="text-[#0b4f4a]/80 text-white/90">
-                  Fill out the form below and we'll get back to you within 24
-                  hours.
-                </p>
-              </CardHeader>
-              <CardContent className="p-8 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="firstName"
-                      className="text-sm font-semibold text-gray-700"
+      {/* Main Content */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
+            <div className="relative">
+              <div className="backdrop-blur-lg bg-white/90 rounded-3xl p-8 border border-gray-200 shadow-2xl">
+                <div className="mb-8">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    Send us a Message
+                  </h2>
+                  <p className="text-gray-600">
+                    Fill out the form below and we'll get back to you within 24
+                    hours.
+                  </p>
+                </div>
+
+                {isSubmitted ? (
+                  <div className="text-center py-12">
+                    <div
+                      className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: "#341C1C" }}
                     >
-                      First Name *
-                    </Label>
-                    <Input
-                      id="firstName"
-                      placeholder="John"
-                      className="border-2 border-gray-200 focus:border-[#0b4f4a] focus:ring-[#0b4f4a]/20 h-12 transition-all duration-200"
-                    />
+                      <CheckCircle className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      Message Sent Successfully!
+                    </h3>
+                    <p className="text-gray-600">
+                      Thank you for contacting us. We'll get back to you soon.
+                    </p>
                   </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="lastName"
-                      className="text-sm font-semibold text-gray-700"
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
+                          Full Name *
+                        </label>
+                        <div className="relative">
+                          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-white"
+                            placeholder="Enter your full name"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
+                          Email Address *
+                        </label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-white"
+                            placeholder="Enter your email"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          htmlFor="phone"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
+                          Phone Number
+                        </label>
+                        <div className="relative">
+                          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                          <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-white"
+                            // style={{ focusRingColor: "#341C1C" }}
+                            placeholder="Enter your phone number"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="company"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
+                          Company Name
+                        </label>
+                        <div className="relative">
+                          <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                          <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleInputChange}
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-white"
+                            // style={{ focusRingColor: "#341C1C" }}
+                            placeholder="Enter your company name"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="subject"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Subject *
+                      </label>
+                      <div className="relative">
+                        <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          type="text"
+                          id="subject"
+                          name="subject"
+                          required
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-white"
+                          // style={{ focusRingColor: "#341C1C" }}
+                          placeholder="What's this about?"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Message *
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={6}
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 bg-white resize-none"
+                        // style={{ focusRingColor: "#341C1C" }}
+                        placeholder="Tell us about your project or inquiry..."
+                      ></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                      style={{ backgroundColor: "#341C1C" }}
                     >
-                      Last Name *
-                    </Label>
-                    <Input
-                      id="lastName"
-                      placeholder="Doe"
-                      className="border-2 border-gray-200 focus:border-[#0b4f4a] focus:ring-[#0b4f4a]/20 h-12 transition-all duration-200"
-                    />
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="w-5 h-5" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-8">
+              {/* Contact Details */}
+              <div className="grid gap-6">
+                {contactInfo.map((info, index) => (
+                  <div
+                    key={index}
+                    className="backdrop-blur-lg bg-white/90 rounded-2xl p-6 border border-gray-200 hover:bg-white hover:border-[#341C1C] hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg"
+                        style={{ backgroundColor: "#341C1C" }}
+                      >
+                        <info.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">
+                          {info.title}
+                        </h3>
+                        <div className="space-y-1">
+                          {info.details.map((detail, detailIndex) => (
+                            <p key={detailIndex} className="text-gray-600">
+                              {detail}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="email"
-                    className="text-sm font-semibold text-gray-700"
-                  >
-                    Email Address *
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john.doe@example.com"
-                    className="border-2 border-gray-200 focus:border-[#0b4f4a] focus:ring-[#0b4f4a]/20 h-12 transition-all duration-200"
-                  />
+              {/* Social Media */}
+              <div className="backdrop-blur-lg bg-white/90 rounded-2xl p-6 border border-gray-200 shadow-xl">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Follow Us
+                </h3>
+                <div className="flex gap-4">
+                  {socialMedia.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.url}
+                      className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl"
+                      style={{ backgroundColor: social.color }}
+                      title={social.name}
+                    >
+                      <social.icon className="w-6 h-6 text-white" />
+                    </a>
+                  ))}
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="subject"
-                    className="text-sm font-semibold text-gray-700"
-                  >
-                    Subject *
-                  </Label>
-                  <Input
-                    id="subject"
-                    placeholder="How can we help you?"
-                    className="border-2 border-gray-200 focus:border-[#0b4f4a] focus:ring-[#0b4f4a]/20 h-12 transition-all duration-200"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="message"
-                    className="text-sm font-semibold text-gray-700"
-                  >
-                    Message *
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us more about your project, goals, and how we can help you achieve them..."
-                    rows={6}
-                    className="border-2 border-gray-200 focus:border-[#0b4f4a] focus:ring-[#0b4f4a]/20 resize-none transition-all duration-200"
-                  />
-                </div>
-
-                <Button className="w-full bg-[#0b4f4a] hover:bg-[#0d5d57] text-white py-4 text-base font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
-                  <Send className="h-5 w-5 mr-2" />
-                  Send Message
-                </Button>
-              </CardContent>
-            </Card>
+      {/* Map Section */}
+      <section className="relative py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <div
+              className="inline-block px-4 py-2 rounded-full border-2 mb-6"
+              style={{ backgroundColor: "#341C1C10", borderColor: "#341C1C" }}
+            >
+              <span
+                className="text-sm font-medium"
+                style={{ color: "#341C1C" }}
+              >
+                FIND US
+              </span>
+            </div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Location
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Visit our headquarters in Addis Ababa, Ethiopia. We're located in
+              the heart of the business district.
+            </p>
           </div>
 
-          {/* Contact Info & Map - Takes 1 column */}
-          <div className="space-y-8">
-            {/* Contact Information */}
-            <Card className="shadow-xl border-0 bg-white/80 backdrop-blur-sm">
-              <CardHeader className="pb-6 bg-gradient-to-br from-[#0b4f4a] to-[#0d5d57] text-white rounded-t-lg">
-                <CardTitle className="text-xl font-semibold">
-                  Get in Touch
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-[#0b4f4a]/10 p-3 rounded-xl">
-                    <MapPin className="h-6 w-6 text-[#0b4f4a]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      Visit Us
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      123 Business Street
-                      <br />
-                      Suite 100
-                      <br />
-                      New York, NY 10001
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-[#0b4f4a]/10 p-3 rounded-xl">
-                    <Phone className="h-6 w-6 text-[#0b4f4a]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      Call Us
-                    </h3>
-                    <p className="text-gray-600 text-sm">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-[#0b4f4a]/10 p-3 rounded-xl">
-                    <Mail className="h-6 w-6 text-[#0b4f4a]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      Email Us
-                    </h3>
-                    <p className="text-gray-600 text-sm">contact@company.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-[#0b4f4a]/10 p-3 rounded-xl">
-                    <Clock className="h-6 w-6 text-[#0b4f4a]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      Office Hours
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Mon - Fri: 9:00 AM - 6:00 PM
-                      <br />
-                      Saturday: 10:00 AM - 4:00 PM
-                      <br />
-                      Sunday: Closed
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Map */}
-            <Card className="shadow-xl border-0 overflow-hidden bg-white/80 backdrop-blur-sm">
-              <CardHeader className="pb-4 bg-gradient-to-br from-[#0b4f4a] to-[#0d5d57] text-white">
-                <CardTitle className="text-lg font-semibold flex items-center gap-2">
-                  <MapPin className="h-5 w-5" />
-                  Find Our Location
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="relative h-64 w-full">
+          <div className="backdrop-blur-lg bg-white/90 rounded-3xl p-8 border border-gray-200 shadow-2xl">
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Map Section */}
+              <div className="lg:col-span-2">
+                <div className="relative h-96 bg-gray-200 rounded-2xl overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878459418!3d40.74844097932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1635959687750!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
+                    src={officeMapURL}
+                    className="absolute inset-0 w-full h-full border-0"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="grayscale hover:grayscale-0 transition-all duration-300"
-                  />
+                  ></iframe>
+
+                  {/* Map overlay with brand pulse */}
+                  <div
+                    className="absolute top-4 left-4 w-4 h-4 rounded-full animate-pulse"
+                    style={{ backgroundColor: "#341C1C" }}
+                  ></div>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+              </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#0b4f4a]/10 px-6 py-3 rounded-full">
-            <div className="w-2 h-2 bg-[#0b4f4a] rounded-full animate-pulse"></div>
-            <span className="text-[#0b4f4a] font-medium text-sm">
-              We typically respond within 2-4 hours
-            </span>
+              {/* Directions Panel */}
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    Quick Directions
+                  </h3>
+                  <div className="space-y-3 text-gray-600">
+                    <p>📍 Located in Addis Ababa</p>
+                    <p>🚗 Free parking available</p>
+                    <p>🚌 Public transport accessible</p>
+                    <p>✈️ 20 minutes from Bole Airport</p>
+                  </div>
+                </div>
+
+                <a
+                  href={directionsURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" w-full flex py-3 px-6 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105  items-center justify-center gap-2 shadow-lg"
+                  style={{ backgroundColor: "#341C1C" }}
+                >
+                  <Globe className="w-5 h-5" />
+                  Get Directions
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
-}
-
-{
-  /* <div className="w-full lg:w-1/2">
-  <div className="h-96 lg:h-full rounded-lg overflow-hidden shadow-md">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.701470809492!2d38.764860211324034!3d8.99959288940983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b850b4031ae6d%3A0x6205c136da432529!2sSTERLING%20BUILDING!5e0!3m2!1sen!2set!4v1740995186837!5m2!1sen!2set"
-      width="100%"
-      height="100%"
-      style={{ border: "0" }}
-      allowFullScreen={true}
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-</div>; */
 }

@@ -31,7 +31,7 @@ export default function EnterpriseLeft({
   // If no breakIndex provided or invalid, just render normally
   if (!breakIndex || breakIndex < 1 || breakIndex >= words.length) {
     return (
-      <h1 className="mb-4 text-4xl font-extrabold leading-tight text-teal-900 md:text-5xl lg:text-6xl">
+      <h1 className="mb-4 text-4xl font-extrabold leading-tight text-{#341C1C} md:text-5xl lg:text-6xl">
         {title}
       </h1>
     );
@@ -47,11 +47,11 @@ export default function EnterpriseLeft({
         className
       )}
     >
-      <div className="absolute left-0 top-0 h-[300px] w-[300px] bg-blue-100 opacity-30 pointer-events-none rounded-full blur-3xl"></div>
+      <div className="absolute left-0 top-0 h-[300px] w-[300px] bg-[#341C1C] opacity-30 pointer-events-none rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 md:px-10 lg:px-16">
         <div className="mb-20 text-center">
-          <h1 className="mb-4 text-4xl font-extrabold leading-tight text-teal-900 md:text-5xl lg:text-6xl">
+          <h1 className="mb-4 text-4xl font-extrabold leading-tight text-[#341C1C] md:text-5xl lg:text-6xl">
             <span className="block">{firstLine}</span>
             <span className="block">{secondLine}</span>
           </h1>

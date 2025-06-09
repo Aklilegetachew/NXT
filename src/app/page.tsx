@@ -13,14 +13,14 @@ import BackgroundPaths from "./Components/BackgroundPath";
 export default function Home() {
   const milestones = [
     {
-      year: "2020",
+      year: "2015",
       title: "Launched Consulting & Technology Services",
       description:
         "Launched our consulting and technology services in a 40 SQM office in Addis Ababa.",
       image: "/step1.svg?height=240&width=240",
     },
     {
-      year: "2021",
+      year: "2020",
       title: "Major Project Deployment",
       description:
         "Deployed Health Network Signage and Website System for leading Ethiopian Pharmacy Network.",

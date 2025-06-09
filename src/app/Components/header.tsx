@@ -259,23 +259,18 @@ export function Header() {
 
         {/* Search and Login */}
         <div className="flex items-center gap-4">
-          <button
-            aria-label="Search"
-            className={`p-1 ${
-              scrolled ? "hover:bg-gray-200" : "hover:bg-gray-700"
-            } rounded-full transition-colors`}
-          ></button>
-          <Button
-            variant="default"
-            className={`hidden md:flex ${
-              scrolled
-                ? "bg-[#341C1C] text-white hover:bg-[#633636]"
-                : "bg-white text-[#341C1C] hover:bg-gray-200"
-            } transition-colors duration-300`}
-          >
-            Contact us
-          </Button>
-
+          <Link href="/contactus">
+            <Button
+              variant="default"
+              className={`hidden md:flex ${
+                scrolled
+                  ? "bg-[#341C1C] text-white hover:bg-[#633636]"
+                  : "bg-white text-[#341C1C] hover:bg-gray-200"
+              } transition-colors duration-300`}
+            >
+              Contact us
+            </Button>
+          </Link>
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden p-1 ${

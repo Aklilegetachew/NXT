@@ -4,7 +4,6 @@ import { Footer } from "@/app/Components/footer";
 import { Header } from "@/app/Components/header";
 import HeroSection from "@/app/Components/marketing-hero";
 
-
 export default function Bussiness() {
   const projects = [
     {
@@ -35,9 +34,8 @@ export default function Bussiness() {
     },
   ];
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen text-[#341C1C]">
       <Header />
-
       <HeroSection
         subtitle="DIGITAL MARKETING"
         title="EXPAND YOUR DIGITAL PRESENCE"

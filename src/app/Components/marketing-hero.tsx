@@ -43,25 +43,25 @@ export default function HeroSection({
       {/* Main hero section */}
       <div className="relative">
         {/* Background decorative elements */}
-        <div className="absolute left-10 top-20 h-16 w-16 rotate-45 rounded-md bg-blue-100/50"></div>
-        <div className="absolute right-1/4 top-10 h-10 w-10 rounded-full bg-orange-100/50"></div>
-        <div className="absolute left-1/3 bottom-20 h-8 w-8 rounded-full bg-purple-100/50"></div>
+        <div className="absolute left-10 top-20 h-16 w-16 rotate-45 rounded-md bg-[#341C1C]/10"></div>
+        <div className="absolute right-1/4 top-10 h-10 w-10 rounded-full bg-[#341C1C]/10"></div>
+        <div className="absolute left-1/3 bottom-20 h-8 w-8 rounded-full bg-[#341C1C]/10"></div>
 
         <div className="container relative mx-auto px-4 py-16 md:py-24">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <div className="max-w-xl">
-              <p className="mb-3 text-sm font-medium tracking-widest text-gray-700">
+              <p className="mb-3 text-sm font-medium tracking-widest text-[#341C1C]">
                 {subtitle}
               </p>
-              <h1 className="mb-6 text-4xl font-bold leading-tight text-teal-900 md:text-5xl">
+              <h1 className="mb-6 text-4xl font-bold leading-tight text-[#341C1C] md:text-5xl">
                 {title}
               </h1>
               {description && (
-                <p className="mb-8 text-lg text-gray-600">{description}</p>
+                <p className="mb-8 text-lg text-[#341C1C]/80">{description}</p>
               )}
               <Button
                 asChild
-                className="rounded-md bg-blue-200 px-8 py-6 text-base font-medium text-teal-900 hover:bg-blue-300"
+                className="rounded-md bg-[#341C1C] px-8 py-6 text-base font-medium text-white hover:bg-[#341C1C]/90"
               >
                 <Link href={buttonLink}>{buttonText}</Link>
               </Button>
@@ -80,15 +80,15 @@ export default function HeroSection({
       </div>
 
       {/* Secondary section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-[#341C1C]/5 py-12">
         <div className="container mx-auto px-4 text-center">
-          <p className="mb-2 text-sm font-medium tracking-widest text-gray-700">
+          <p className="mb-2 text-sm font-medium tracking-widest text-[#341C1C]">
             {secondarySubtitle}
           </p>
-          <h2 className="text-3xl font-bold text-teal-900 md:text-4xl">
+          <h2 className="text-3xl font-bold text-[#341C1C] md:text-4xl">
             {secondaryTitle}
           </h2>
-          <div className="mx-auto mt-3 h-1 w-16 bg-teal-900"></div>
+          <div className="mx-auto mt-3 h-1 w-16 bg-[#341C1C]"></div>
         </div>
       </div>
 
